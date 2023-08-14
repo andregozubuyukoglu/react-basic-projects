@@ -1,8 +1,8 @@
-import SingleItem from './SingleItem';
+import SingleItem from "./SingleItem"
 
 const Items = ({ items, removeItem, editItem }) => {
   return (
-    <div className='items'>
+    <div className="items">
       {items.map((item) => {
         return (
           <SingleItem
@@ -11,9 +11,9 @@ const Items = ({ items, removeItem, editItem }) => {
             removeItem={removeItem}
             editItem={editItem}
           />
-        );
+        )
       })}
     </div>
-  );
-};
-export default Items;
+  )
+}
+export default Items
