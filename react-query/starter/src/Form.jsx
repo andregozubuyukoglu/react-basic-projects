@@ -1,10 +1,18 @@
 import { useState } from "react"
+import { useCreateTask } from "./reactQueryCutomHooks"
 
 const Form = () => {
   const [newItemName, setNewItemName] = useState("")
 
+  const { createTask, createTaskLoading } = useCreateTask()
+
   const handleSubmit = (e) => {
     e.preventDefault()
+    createTask(newItemName, {
+      onSuccess: () => {
+        setNewItemName("")
+      },
+    })
   }
 
   return (
@@ -17,7 +25,7 @@ const Form = () => {
           value={newItemName}
           onChange={(event) => setNewItemName(event.target.value)}
         />
-        <button type="submit" className="btn">
+        <button type="submit" className="btn" disabled={createTaskLoading}>
           add task
         </button>
       </div>
